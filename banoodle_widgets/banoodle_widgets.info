@@ -1,0 +1,4 @@
+name = Banoodle's CKEditor Widgets
+description = Accordion and callout widgets.
+core = 7.x
+dependencies[] = ckeditor

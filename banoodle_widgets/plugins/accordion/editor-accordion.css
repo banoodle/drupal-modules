@@ -1,0 +1,23 @@
+.accordion {
+  position: relative;
+	margin: 10px;
+	background: #eee;
+	border: 1px dashed #ddd;
+}
+.accordion__title,
+.accordion__content {
+  margin: 5px;
+	box-shadow: 0 1px 1px #ddd inset;
+	border: 1px solid #cccccc;
+	background: #fff;
+}
+
+.accordion:before {
+  background: none repeat scroll 0 0 #141;
+  color: #fff;
+  content: ".accordion";
+  opacity: 0.65;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
