@@ -1,0 +1,83 @@
+<?php
+/**
+ *
+ * Functions related to gating info-center assets using marketo forms2 with
+ * progressive profiling enabled.
+ *
+ */
+
+/**
+ * Implementation of hook_menu()
+ */
+ // Creates marketo form page.
+function sp_gatedassets_menu() {
+   $items['info-center/register'] = array(
+     'page callback' => 'render_marketoform',
+     'access arguments' => array('access content'),
+     'type' => MENU_NORMAL_ITEM,
+   );
+   return $items;
+ }
+ /**
+  * Implementation of hook_theme
+  */
+// Adds template override suggestion for dynamic marketo form page.
+function sp_gatedassets_theme($existing, $type, $theme, $path) {
+  return array(
+      'the_html_page' => array(
+      'template' => 'gated-assets', /* gated-assets.tpl.php */
+    ),
+  );
+}
+// Render marketo form page.
+function render_marketoform(){
+  return theme('the_html_page');
+}
+/**
+ * Implementation of hook_permission
+ */
+ // Adds permission for bypassing form requirment for privileged roles.
+function sp_gatedassets_permission() {
+  return array(
+    'bypass infoctr gate' => array(
+      'title' => t('Bypass Info Center Gates'),
+      'description' => t('Can always view Info Center items without needing to fill out form.'),
+    ),
+  );
+}
+/**
+ * Implementation of preprocess_node
+ */
+// Prevent unregistered access to gated info center assets
+function sp_gatedassets_preprocess_node(&$vars, $hook) {
+  $node = $vars['node'];
+  $lang = $node->language;
+  if ($node->type == 'infoctr') {
+    // Have to do this otherwise people can bypass registration requirment.
+    drupal_page_is_cacheable(FALSE);
+    // If gated asset field is enabled in node.
+    if (!empty ($node->field_infoctr_gated[$lang][0]['value'])) {
+      // If user doesn't have form bypass privileges.
+      if (!user_access('bypass infoctr gate')) {
+        // Assemble path variables using current asset's URL.
+        $asset = arg(1);
+        $assetquery = '/info-center/register?asset=' . $asset;
+        $regpath = 'http://newdocs-silverpeak.pantheonsite.io' . $assetquery;
+        // If there is a referer and if it's not the registration form.
+        if(isset($_SERVER['HTTP_REFERER'])) {
+          // Take visitor to registration form for that asset.
+          if ($_SERVER['HTTP_REFERER'] != $regpath) {
+            header('Location: ' . $regpath);
+            exit();
+          }
+        }
+        // If there is no referer (e.g., bookmark or entering the URL directly).
+        else {
+          // Take visitor to registration form for that asset.
+          header('Location: ' . $regpath);
+          exit();
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+name = Silver Peak Gated Assets
+description = Generate marketo form with dynamic thankyou page for gated Info Center items.
+
+package = Silver Peak
+core = 7.x
+version = "7.x-0.1"
