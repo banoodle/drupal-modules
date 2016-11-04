@@ -1,15 +1,16 @@
 <?php
+
 /**
  *
  * Template for marketo form page.
  *
  */
 ?>
+
 <?php
-if (isset($_GET['ref'])) {
-    $_SESSION['ref'] = htmlspecialchars(substr($_GET['ref'], 0, 100));
-}
-?>
+if (isset($_GET['ref'])) { $_SESSION['ref'] = htmlspecialchars(substr($_GET['ref'], 0, 100));
+}?>
+
 
 <?php include_once $directory . '/templates/navigation.php'; ?>
 <div class="clear"></div>
@@ -30,7 +31,9 @@ if (isset($_GET['ref'])) {
             <h2><?php print $subtitle; ?></h2>
           <?php endif; ?>
         </hgroup>
-        <?php print $head_box_suffix; /*see template.php*/ ?>
+/*see template.php*/
+        <?php print $head_box_suffix;
+ ?>
       <?php endif; ?>
 
       <div id="content-holder">
@@ -71,10 +74,10 @@ if (isset($_GET['ref'])) {
       </div><!--/#content-holder-->
 
       <?php
-      $sidebar_first = render($page['sidebar_first']);
-      $sidebar_first_bottom = render($page['sidebar_first_bottom']);
+$sidebar_first = render($page['sidebar_first']); $sidebar_first_bottom = render($page['sidebar_first_bottom']);
 
-      if ($sidebar_first || $sidebar_first_bottom) { ?>
+if ($sidebar_first || $sidebar_first_bottom) {
+  ?>
         <aside id="sidebar-first" class="sidebar-wrapper">
           <?php if ($sidebar_first) { ?>
             <div id="sidebar-first-top">
@@ -90,10 +93,10 @@ if (isset($_GET['ref'])) {
       <?php } ?>
 
       <?php
-      $sidebar_second = render($page['sidebar_second']);
-      $sidebar_second_bottom = render($page['sidebar_second_bottom']);
+$sidebar_second = render($page['sidebar_second']); $sidebar_second_bottom = render($page['sidebar_second_bottom']);
 
-      if ($sidebar_second || $sidebar_second_bottom) { ?>
+if ($sidebar_second || $sidebar_second_bottom) {
+  ?>
         <aside id="sidebar-second" class="sidebar-wrapper">
           <?php if ($sidebar_second) { ?>
             <div id="sidebar-second-top">
@@ -115,4 +118,5 @@ if (isset($_GET['ref'])) {
 </div><!-- /#body-wrapper-->
 
 <?php include_once $directory . '/templates/footer.php'; ?>
-<?php print render($page['bottom']); ?>
+<?php print render($page['bottom']); 
+

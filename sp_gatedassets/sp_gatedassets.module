@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * Functions related to gating info-center assets using marketo forms2 with
@@ -9,34 +10,37 @@
 /**
  * Implementation of hook_menu()
  */
- // Creates marketo form page.
+// Creates marketo form page.
 function sp_gatedassets_menu() {
-   $items['info-center/register'] = array(
-     'page callback' => 'render_marketoform',
-     'access arguments' => array('access content'),
-     'type' => MENU_NORMAL_ITEM,
-   );
-   return $items;
- }
- /**
-  * Implementation of hook_theme
-  */
+  $items['info-center/register'] = array(
+    'page callback' => 'render_marketoform',
+    'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  return $items;
+}
+
+/**
+ * Implementation of hook_theme
+ */
 // Adds template override suggestion for dynamic marketo form page.
 function sp_gatedassets_theme($existing, $type, $theme, $path) {
   return array(
-      'the_html_page' => array(
-      'template' => 'gated-assets', /* gated-assets.tpl.php */
+    'the_html_page' => array(
+      /* gated-assets.tpl.php */
+      'template' => 'gated-assets',
     ),
   );
 }
 // Render marketo form page.
-function render_marketoform(){
+function render_marketoform() {
   return theme('the_html_page');
 }
+
 /**
  * Implementation of hook_permission
  */
- // Adds permission for bypassing form requirment for privileged roles.
+// Adds permission for bypassing form requirment for privileged roles.
 function sp_gatedassets_permission() {
   return array(
     'bypass infoctr gate' => array(
@@ -45,6 +49,7 @@ function sp_gatedassets_permission() {
     ),
   );
 }
+
 /**
  * Implementation of preprocess_node
  */
@@ -56,7 +61,7 @@ function sp_gatedassets_preprocess_node(&$vars, $hook) {
     // Have to do this otherwise people can bypass registration requirment.
     drupal_page_is_cacheable(FALSE);
     // If gated asset field is enabled in node.
-    if (!empty ($node->field_infoctr_gated[$lang][0]['value'])) {
+    if (!empty($node->field_infoctr_gated[$lang][0]['value'])) {
       // If user doesn't have form bypass privileges.
       if (!user_access('bypass infoctr gate')) {
         // Assemble path variables using current asset's URL.
@@ -64,7 +69,7 @@ function sp_gatedassets_preprocess_node(&$vars, $hook) {
         $assetquery = '/info-center/register?asset=' . $asset;
         $regpath = 'http://newdocs-silverpeak.pantheonsite.io' . $assetquery;
         // If there is a referer and if it's not the registration form.
-        if(isset($_SERVER['HTTP_REFERER'])) {
+        if (isset($_SERVER['HTTP_REFERER'])) {
           // Take visitor to registration form for that asset.
           if ($_SERVER['HTTP_REFERER'] != $regpath) {
             header('Location: ' . $regpath);
@@ -81,3 +86,4 @@ function sp_gatedassets_preprocess_node(&$vars, $hook) {
     }
   }
 }
+
