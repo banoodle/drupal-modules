@@ -24,7 +24,7 @@ function sp_gatedassets_menu() {
     'description' => 'SP Gated Assets configuration',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('sp_gatedassets_admin_settings_form'),
-    'access arguments' => array('access content'),
+    'access arguments' => array('administer sp_gatedassets'),
     'file' => 'includes/sp_gatedassets.admin.inc',
   );
   return $items;
@@ -57,8 +57,6 @@ function sp_gatedassets_permission() {
       'title' => t('Bypass SP Gatedassets'),
       'description' => t('Can always view Info Center items without needing to fill out form.'),
     ),
-  );
-  return array(
     'administer sp_gatedassets' => array(
       'title' => t('Administer SP Gatedassets'),
       'description' => t('Can access configuration.'),
