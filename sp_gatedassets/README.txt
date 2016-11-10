@@ -19,6 +19,4 @@ overriding the form's default thank you page.
 4. To configure, enable module and set marketo key and form id in
 gated-assets.tpl.php
 
-Todo: add admin UI for adding marketo key and form id.
-
 Author: Anne ("Banoodle") Bonham abonham@mollyduggan.com

@@ -12,10 +12,20 @@
  */
 // Creates marketo form page.
 function sp_gatedassets_menu() {
+  // Register form.
   $items['info-center/register'] = array(
     'page callback' => 'render_marketoform',
     'access arguments' => array('access content'),
     'type' => MENU_NORMAL_ITEM,
+  );
+  // Module settings.
+  $items['admin/config/search/sp_gatedassets'] = array(
+    'title' => 'SP Gated Assets',
+    'description' => 'SP Gated Assets configuration',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('sp_gatedassets_admin_settings_form'),
+    'access arguments' => array('access content'),
+    'file' => 'includes/sp_gatedassets.admin.inc',
   );
   return $items;
 }
@@ -44,8 +54,14 @@ function render_marketoform() {
 function sp_gatedassets_permission() {
   return array(
     'bypass infoctr gate' => array(
-      'title' => t('Bypass Info Center Gates'),
+      'title' => t('Bypass SP Gatedassets'),
       'description' => t('Can always view Info Center items without needing to fill out form.'),
+    ),
+  );
+  return array(
+    'administer sp_gatedassets' => array(
+      'title' => t('Administer SP Gatedassets'),
+      'description' => t('Can access configuration.'),
     ),
   );
 }
@@ -86,4 +102,3 @@ function sp_gatedassets_preprocess_node(&$vars, $hook) {
     }
   }
 }
-

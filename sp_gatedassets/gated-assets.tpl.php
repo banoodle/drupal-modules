@@ -43,9 +43,11 @@ if (isset($_GET['ref'])) { $_SESSION['ref'] = htmlspecialchars(substr($_GET['ref
         <?php if ($action_links): ?>
           <ul class="action-links"><?php print render($action_links); ?></ul>
         <?php endif; ?>
+        <?php $marketo_id = variable_get('sp_gatedassets_marketo_id'); ?>
+        <?php $marketo_form = variable_get('sp_gatedassets_marketo_form'); ?>
         <script src="//app-sji.marketo.com/js/forms2/js/forms2.min.js"></script>
         <form id="mktoForm_3673"></form>
-        <script>MktoForms2.loadForm("//app-sji.marketo.com", "[marketo_key goes here]", [marketo formid goes here], function(form) {
+        <script>MktoForms2.loadForm("//app-sji.marketo.com", "<?php print $marketo_id; ?>", <?php print $marketo_form; ?>, function(form) {
             //Add an onSuccess handler
             form.onSuccess(function(values, followUpUrl) {
               // Get asset path from url 'Asset' query parameter
@@ -118,5 +120,4 @@ if ($sidebar_second || $sidebar_second_bottom) {
 </div><!-- /#body-wrapper-->
 
 <?php include_once $directory . '/templates/footer.php'; ?>
-<?php print render($page['bottom']); 
-
+<?php print render($page['bottom']);

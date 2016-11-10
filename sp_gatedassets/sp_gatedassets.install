@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Install hooks for SP Gated Assets module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function sp_gatedassets_uninstall() {
+  variable_del('sp_gatedassets_marketo_id');
+  variable_del('sp_gatedassets_marketo_form');
+}
+
+/**
+ * Implements hook_disable().
+ */
+function sp_gatedassets_disable() {
+  $queue = DrupalQueue::get('sp_gatedassets_lead', TRUE);
+  $queue->deleteQueue();
+}
