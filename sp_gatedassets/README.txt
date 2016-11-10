@@ -16,7 +16,7 @@ overriding the form's default thank you page.
 
 3. This works with marketo forms2 with or without progressive profiling enabled.
 
-4. To configure, enable module and set marketo key and form id in
-gated-assets.tpl.php
+4. To configure, enable module and set marketo key and form id at
+/admin/config/search/sp_gatedassets
 
 Author: Anne ("Banoodle") Bonham abonham@mollyduggan.com
