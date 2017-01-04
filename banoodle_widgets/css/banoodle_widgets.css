@@ -1,0 +1,10 @@
+.callout {
+  box-sizing: border-box;
+  float: right;
+  width: 50%;
+  padding: 20px;
+  margin: 10px 0px 10px 10px;
+  background-color: #eee;
+  font-size: 1.25em;
+  font-style: italic;
+}
