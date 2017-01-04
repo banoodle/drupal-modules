@@ -10,6 +10,8 @@
  *
  * Session URL: http://2014.tcdrupal.org/session/help-your-wysiwyg-help-you-creating-custom-ckeditor-widgets
  * Slides URL: http://ten7.com/ckeditor_widgets
+ * 
+ * Accordion widget added by Banoodle.
  */
 
 /**
@@ -22,7 +24,7 @@ function banoodle_widgets_ckeditor_plugin() {
       'desc' => t('CKEditor widget for a callout box.'),
       // The path to the CKEditor plugins directory, with the trailing slash.
       // Directory must contain a "plugin.js" file.
-      'path' => drupal_get_path('module', 'tc2014_widgets') . '/plugins/callout/',
+      'path' => drupal_get_path('module', 'banoodle_widgets') . '/plugins/callout/',
       // Register the toolbar icon to be used in the Drupal admin interface.
       'buttons' => array(
         'callout' => array(
@@ -34,7 +36,7 @@ function banoodle_widgets_ckeditor_plugin() {
     'accordion' => array(
       'name' => 'accordion',
       'desc' => t('CKEditor widget for an accordion.'),
-      'path' => drupal_get_path('module', 'tc2014_widgets') . '/plugins/accordion/',
+      'path' => drupal_get_path('module', 'banoodle_widgets') . '/plugins/accordion/',
       'buttons' => array(
         'accordion' => array(
           'label' => 'Accordion',
@@ -52,7 +54,7 @@ function banoodle_widgets_entity_view($entity, $type, $view_mode, $langcode) {
   // Make the jQuery UI Accordion plugin available.
   drupal_add_library('system', 'ui.accordion');
   // Load our JS file that implements jQuery UI Accordion.
-  drupal_add_js(drupal_get_path('module', 'tc2014_widgets') . '/js/tc2014_widgets.js');
+  drupal_add_js(drupal_get_path('module', 'banoodle_widgets') . '/js/banoodle_widgets.js');
   // Load custom CSS for styling callout widgets.
-  drupal_add_css(drupal_get_path('module', 'tc2014_widgets') . '/css/tc2014_widgets.css');
+  drupal_add_css(drupal_get_path('module', 'banoodle_widgets') . '/css/banoodle_widgets.css');
 }
