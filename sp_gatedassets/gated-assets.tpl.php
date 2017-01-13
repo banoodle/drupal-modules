@@ -6,15 +6,8 @@
  *
  */
 ?>
-
-<?php
-if (isset($_GET['ref'])) { $_SESSION['ref'] = htmlspecialchars(substr($_GET['ref'], 0, 100));
-}?>
-
-
-<?php include_once $directory . '/templates/navigation.php'; ?>
+<?php print render($page['header']); ?>
 <div class="clear"></div>
-
 <div id="body-wrapper">
 <div id="page">
   <div id="main">
@@ -31,11 +24,8 @@ if (isset($_GET['ref'])) { $_SESSION['ref'] = htmlspecialchars(substr($_GET['ref
             <h2><?php print $subtitle; ?></h2>
           <?php endif; ?>
         </hgroup>
-/*see template.php*/
-        <?php print $head_box_suffix;
- ?>
+        <?php print $head_box_suffix;?>
       <?php endif; ?>
-
       <div id="content-holder">
         <?php print $messages; ?>
         <?php print render($tabs); ?>
@@ -119,5 +109,5 @@ if ($sidebar_second || $sidebar_second_bottom) {
 </div><!-- /#page -->
 </div><!-- /#body-wrapper-->
 
-<?php include_once $directory . '/templates/footer.php'; ?>
+<?php print render($page['footer']); ?>
 <?php print render($page['bottom']);
