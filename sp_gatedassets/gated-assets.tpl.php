@@ -65,8 +65,7 @@
         <?php print $feed_icons; ?>
       </div><!--/#content-holder-->
 
-      <?php
-$sidebar_first = render($page['sidebar_first']); $sidebar_first_bottom = render($page['sidebar_first_bottom']);
+      <?php $sidebar_first = render($page['sidebar_first']); $sidebar_first_bottom = render($page['sidebar_first_bottom']);
 
 if ($sidebar_first || $sidebar_first_bottom) {
   ?>
@@ -84,8 +83,7 @@ if ($sidebar_first || $sidebar_first_bottom) {
         </aside>
       <?php } ?>
 
-      <?php
-$sidebar_second = render($page['sidebar_second']); $sidebar_second_bottom = render($page['sidebar_second_bottom']);
+      <?php $sidebar_second = render($page['sidebar_second']); $sidebar_second_bottom = render($page['sidebar_second_bottom']);
 
 if ($sidebar_second || $sidebar_second_bottom) {
   ?>
