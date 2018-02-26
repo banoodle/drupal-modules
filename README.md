@@ -5,8 +5,7 @@ My custom drupal modules
 
 Drupal 7:
 
-sp_gatedassets
-banoodle_widgets
+sp_gatedassets and banoodle_widgets
 
 Drupal 8:
 
