@@ -18,4 +18,4 @@ overriding the form's default thank you page.
 
 4. To configure, enable module and set marketo key and form id at admin/config/search/sp_gatedassets
 
-Author: Anne ("Banoodle") Bonham abonham@mollyduggan.com
+Author: Anne ("Banoodle") Bonham abonham@yahoo.com
