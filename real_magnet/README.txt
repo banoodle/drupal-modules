@@ -4,7 +4,7 @@ REST service that posts templated content to Real Magnet via their API (https://
 
 INSTALLATION INSTRUCTIONS:
 
-It assumed you have an account with RealMagnet.com.
+It is assumed you have an account with RealMagnet.com.
 
 1) Contact Real Magnet and request they enable the REST API service for your account (this can take 24-48 hours).
 
