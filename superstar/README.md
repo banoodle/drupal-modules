@@ -1,4 +1,4 @@
-The Superstar module provides a 5-star ratings stars field formatter for decimal and list_integer field types.
+The Superstar module provides a 5-star ratings field formatter for decimal and list_integer field types.
 
 Installation Instructions:
 
