@@ -1,0 +1,5 @@
+ratings_stars:
+  version: VERSION
+  css:
+    base:
+      css/superstar.css: {}

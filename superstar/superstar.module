@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * @file
+ * Contains superstar.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function superstar_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the superstar module.
+    case 'help.page.superstar':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Provides field formatter for decimal and list_integer fields that displays an integer as a five-star ratings widget.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function superstar_theme() {
+  return [
+    'superstar' => [
+      'render element' => 'children',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function superstar_page_attachments(array &$attachments) {
+  $attachments['#attached']['library'][] =  'superstar/ratings_stars';
+}
